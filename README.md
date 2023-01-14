@@ -1,4 +1,4 @@
-# MicroPython Port – Silicon Witchery S1 Bluetooth & FPGA Module
+# MicroPython on the S1 Bluetooth / FPGA Module
 
 ![S1 Module annotated](https://docs.siliconwitchery.com/images/annotated-module.png)
 
@@ -30,41 +30,34 @@ The main interface to the Module is via the Bluetooth REPL. Use this [Web REPL](
     - Battery charging voltage and current settings
 
 
-## Building the binary
+## Setting started
 
-1. Clone this repo
-
-    ```bash
-    git clone <URL>.git
-    ```
-
-1. Build the `mpy-cross` tool
+1. Set up the project:
 
     ```bash
-    cd micropython
-    make -C mpy-cross
-    ```
+    # Clone and jump into the directory
+    git clone https://github.com/siliconwitchery/s1-micropython.git
+    cd s1-micropython
 
-1. Ensure you have the `nrfx` lib downloaded using
+    # Initialize the submodules
+    git submodule update --init 
 
-    ```bash
-    cd ports/s1-module/
-    make submodules
-    ```
+    # Build the mpy-cross tool
+    make -C micropython/mpy-cross
 
-1. Download the Bluetooth stack from Nordic
-
-    ```bash
+    # Download the bluetooth stack from Nordic
     make download-softdevice
     ```
 
-1. Finally make the project
+1. Ensure you have the latest [ARM GCC toolchain](https://developer.arm.com/downloads/-/gnu-rm) installed.
+
+1. Build the project:
 
     ```bash
     make
     ```
 
-1. To flash your device, use `make flash` to ensure the chip is erased, and Bluetooth stack is loaded along with the application. You will need a [J-Link compatible programmer](https://docs.siliconwitchery.com/s1-popout-board/s1-popout-board/#programming), and the [nRF command line tools](https://www.nordicsemi.com/Products/Development-tools/nrf-command-line-tools/download) installed
+1. To flash your device, check [this guide](https://docs.siliconwitchery.com/s1-popout-board/s1-popout-board/#programming). You will also need to download and install the [nRF command line tools](https://www.nordicsemi.com/Products/Development-tools/nrf-command-line-tools/download). To flash your S1, use the command:
 
     ```bash
     make flash

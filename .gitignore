@@ -1,0 +1,4 @@
+# Ignore build folder
+
+# Ignore softdevice folder
+softdevice/

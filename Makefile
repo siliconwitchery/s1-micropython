@@ -139,7 +139,7 @@ download-softdevice:
 
 # Creates a release binary using mergehex
 release: build/firmware.hex
-	mergehex -q -m $< softdevice/*.hex -o build/micropython-s1-$(shell git describe).hex
+	mergehex -q -m $< softdevice/*.hex -o build/micropython-s1-$(shell git rev-parse --short HEAD).hex
 
 # Include remaining core make rules.
 include micropython/py/mkrules.mk
